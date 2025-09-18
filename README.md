@@ -18,7 +18,7 @@ A comprehensive C# .NET Windows Forms application for managing job postings, app
 
 The database backup file (`JobConnect.bak`) is included in this repository. Below is the main schema:
 
-![Database Schema Diagram](screenshots/database_schema.png) <!-- You can add this later -->
+![Database Schema Diagram](jcSchemaDiagram.png) 
 
 ### Key Tables:
 -   `UsersTable` - Stores login credentials and roles
@@ -35,8 +35,7 @@ The database backup file (`JobConnect.bak`) is included in this repository. Belo
     -   Build the solution to restore NuGet packages.
     -   Run the project.
 
-## Screenshots
-![Application Screenshot](applicationScreenshots.png)
+
 ## Contributing
 
 This project was developed as an assignment for the course "OOP2" at AIUB.
