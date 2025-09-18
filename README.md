@@ -36,15 +36,7 @@ The database backup file (`JobConnect.bak`) is included in this repository. Belo
     -   Run the project.
 
 ## Screenshots
-
-### Employer Dashboard
-![Employer Dashboard](screenshots/employer_dashboard.png)
-
-### Job Application Form
-![Application Form](screenshots/application_form.png)
-
-*(You can add your own screenshots later)*
-
+![Application Screenshot](applicationScreenshots.png)
 ## Contributing
 
 This project was developed as an assignment for the course "OOP2" at AIUB.
