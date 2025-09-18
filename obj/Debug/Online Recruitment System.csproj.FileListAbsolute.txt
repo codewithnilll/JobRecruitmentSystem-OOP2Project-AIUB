@@ -1,0 +1,50 @@
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Online Recruitment System.csproj.AssemblyReference.cache
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.employerDashboard.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.welcomePage.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.adminDashboard.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.jsDashboard.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.login.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.Properties.Resources.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.recoverPassword.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.signUp.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Online Recruitment System.csproj.GenerateResource.cache
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Online Recruitment System.csproj.CoreCompileInputs.cache
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\Employee Management System.exe.config
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\Employee Management System.exe
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\Employee Management System.pdb
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\BouncyCastle.Crypto.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\ClosedXML.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\ClosedXML.Parser.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\DocumentFormat.OpenXml.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\ExcelNumberFormat.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\itextsharp.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\Microsoft.Bcl.HashCode.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\RBush.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\SixLabors.Fonts.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\System.Buffers.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\System.Memory.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\System.Numerics.Vectors.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\ClosedXML.pdb
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\ClosedXML.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\ClosedXML.Parser.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\DocumentFormat.OpenXml.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\ExcelNumberFormat.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\itextsharp.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\Microsoft.Bcl.HashCode.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\RBush.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\SixLabors.Fonts.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\System.Buffers.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\System.Memory.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\System.Numerics.Vectors.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Online R.34F26E66.Up2Date
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee Management System.exe
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee Management System.pdb
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee Management System.exe.config
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.jsApplicationForm.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.viewApplicationByAdmin.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.viewApplicationByEmployer.resources
+E:\C#\Home\Projects\Online Recruitment System\Online Recruitment System\obj\Debug\Employee_Management_System.ViewApplicationByJobseeker.resources

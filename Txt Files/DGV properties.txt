@@ -1,0 +1,5 @@
+AllowUserToAddRows = false
+AllowUserToDeleteRows = false
+ReadOnly = true
+SelectionMode = fullrowselect
+columnheaderdefaultcellstyle->wrapmode = false

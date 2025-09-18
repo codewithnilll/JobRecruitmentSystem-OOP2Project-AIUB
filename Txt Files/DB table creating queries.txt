@@ -1,0 +1,146 @@
+1.CREATE TABLE UsersTable (
+    Gender NVARCHAR(250) NULL,
+    userID NVARCHAR(250) NOT NULL PRIMARY KEY,
+    firstName NVARCHAR(250) NULL,
+    lastName NVARCHAR(250) NULL,
+    Role NVARCHAR(250) NULL,
+    Phone VARCHAR(250) NULL,
+    Email NVARCHAR(250) NULL,
+    Password NVARCHAR(250) NULL
+);
+
+
+
+
+2.CREATE TABLE EmployersTable (
+employerid NVARCHAR(250) PRIMARY KEY,              -- same as UserID
+companyname NVARCHAR(100) NOT NULL,
+industry NVARCHAR(100),
+address NVARCHAR(200),
+website NVARCHAR(100),
+phone VARCHAR(250),
+about NVARCHAR(MAX),
+CONSTRAINT FK_Employers_Users FOREIGN KEY (employerid) REFERENCES UsersTable(userID)
+);
+
+
+
+
+
+
+3.CREATE TABLE JobsTable (
+    jobid NVARCHAR(250) PRIMARY KEY,          -- Job ID (e.g., J-101)
+    employerid NVARCHAR(250) NOT NULL,        -- FK to EmployersTable
+    jobtitle NVARCHAR(250) NOT NULL,
+    employmenttype NVARCHAR(250) NOT NULL,    -- e.g., Full-time, Part-time
+    salaryrange NVARCHAR(250) NOT NULL,
+    experiencerequired NVARCHAR(50) NOT NULL, -- e.g., 1 year, Entry-level
+    publisheddate NVARCHAR(50) NOT NULL,      -- e.g., 7 Dec, 2001
+    publishedtime NVARCHAR(50) NOT NULL,      -- e.g., 6:23 p.m.
+    deadline NVARCHAR(50) NOT NULL,           -- e.g., 30 Sep, 2025
+    status NVARCHAR(50) NOT NULL,             -- e.g., Active, Pending
+
+    -- Foreign key linking to Employers table
+    CONSTRAINT FK_Jobs_Employers FOREIGN KEY (employerid)
+        REFERENCES EmployersTable(employerid)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+
+
+
+
+4.CREATE TABLE PaymentsTable (
+    paymentid NVARCHAR(250) PRIMARY KEY,       -- Unique Payment ID (e.g., P-001)
+    employerid NVARCHAR(250) NOT NULL,         -- FK → EmployersTable (who paid)
+    jobid NVARCHAR(250) NOT NULL,              -- FK → JobsTable (which job payment is for)
+    paymentmethod NVARCHAR(100) NOT NULL,      -- e.g., Credit Card, PayPal, Bank Transfer
+    phonenumber NVARCHAR(20) NOT NULL,         -- The number from which payment is made
+    amount DECIMAL(10,2) NOT NULL,             -- Amount paid (e.g., 199.00)
+    paymentstatus NVARCHAR(50) NOT NULL,       -- e.g., Completed, Pending, Failed, Refunded
+
+    -- Foreign key linking to Employers table
+    CONSTRAINT FK_Payments_Employers FOREIGN KEY (employerid)
+        REFERENCES EmployersTable(employerid)
+        ON DELETE NO ACTION,
+    
+    -- Foreign key linking to Jobs table
+    CONSTRAINT FK_Payments_Jobs FOREIGN KEY (jobid)
+        REFERENCES JobsTable(jobid)
+        ON DELETE NO ACTION
+);
+
+
+
+
+5.CREATE TABLE JobSeekersTable (
+    jsid NVARCHAR(250) PRIMARY KEY,
+    jsaddress NVARCHAR(250) NOT NULL,
+    education NVARCHAR(250) NOT NULL,
+    skills NVARCHAR(MAX) NOT NULL,
+    dob NVARCHAR(250) NOT NULL,
+    bloodgroup NVARCHAR(250) NOT NULL,
+    experiencelevel NVARCHAR(250) NOT NULL,
+    nationality NVARCHAR(250) NOT NULL,
+    religion NVARCHAR(250) NOT NULL,
+    maritalstatus NVARCHAR(250) NOT NULL,
+    personalwebsite NVARCHAR(250) NULL,
+    languages NVARCHAR(250) NOT NULL,
+    
+    CONSTRAINT FK_JobSeekers_Users FOREIGN KEY (jsid)
+        REFERENCES UsersTable(userID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+
+
+6. CREATE TABLE SavedJobsTable (
+    savedJobId INT IDENTITY(1,1) PRIMARY KEY,   -- Auto increment raw ID, formatted later as SJ-xxxxx in C#
+
+    jobId NVARCHAR(250) NOT NULL,               -- The job being saved (FK → JobsTable.jobid)
+    jsid NVARCHAR(250) NOT NULL,                -- The jobseeker who saved the job (FK → JobseekersTable.jsid)
+
+    savedDate DATETIME DEFAULT GETDATE(),       -- Raw date & time, formatting applied later in SELECT or C#
+
+    -- Foreign key linking saved job to JobsTable
+    CONSTRAINT FK_SavedJobs_Job FOREIGN KEY (jobId) 
+        REFERENCES JobsTable(jobid) ON DELETE CASCADE,
+
+    -- Foreign key linking saved job to JobseekersTable
+    CONSTRAINT FK_SavedJobs_Jobseeker FOREIGN KEY (jsid) 
+        REFERENCES JobseekersTable(jsid) ON DELETE CASCADE
+);
+
+
+
+7.CREATE TABLE ApplicationsTable (
+    applicationId NVARCHAR(250) PRIMARY KEY,   -- Will hold values like 'AP-10001'
+    jobid NVARCHAR(250) NOT NULL,              -- Matches JobsTable (also NVARCHAR)
+    jsid NVARCHAR(250) NOT NULL,               -- Matches JobSeekersTable
+
+    expectedSalary NVARCHAR(100) NULL,  
+
+    status NVARCHAR(50) NOT NULL, -- e.g., Submitted, Rejected after interview, Rejected, Interview Scheduled, Hired      
+    interviewDate NVARCHAR(50) NULL,    
+    interviewTime NVARCHAR(50) NULL,    
+
+    appliedDate NVARCHAR(50) NOT NULL,      
+
+    CONSTRAINT FK_Applications_Jobs FOREIGN KEY (jobid) REFERENCES JobsTable(jobId),
+    CONSTRAINT FK_Applications_JobSeekers FOREIGN KEY (jsid) REFERENCES JobSeekersTable(jsid)
+);
+
+8. CREATE TABLE ReviewsTable (
+    rid INT IDENTITY(1,1) PRIMARY KEY,   -- Unique review ID
+    userID NVARCHAR(250) NOT NULL,       -- FK from UsersTable
+    reviewtext NVARCHAR(MAX) NOT NULL,   -- Review content
+    posteddate NVARCHAR(50) NOT NULL,    -- Date of posting (set from C#)
+    postedtime NVARCHAR(50) NOT NULL,    -- Time of posting (set from C#)
+
+    CONSTRAINT FK_Reviews_Users FOREIGN KEY (userID)
+        REFERENCES UsersTable(userID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);

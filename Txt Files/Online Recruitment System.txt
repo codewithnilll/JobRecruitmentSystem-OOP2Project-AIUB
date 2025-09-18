@@ -1,0 +1,327 @@
+Role-wise Attribute Mapping
+👤 1. Admin
+
+The Admin doesn’t have its own separate table; it’s just a user with the role = "Admin".
+Admin mainly manages all tables.
+
+Attributes Admin uses/manages:
+
+From Users: UserID, Username, Email, Role (to approve/reject users)
+
+From Employers: CompanyName, Industry, Address, Phone, Website, About
+
+From JobSeekers: FullName, Phone, Skills, Resume
+
+From Jobs: JobTitle, JobDescription, Location, SalaryRange, Deadline
+
+From Applications: Status (can view and possibly change)
+
+From Payments (optional): Amount, Status
+
+✅ Unique power: Admin can view/edit/delete anything across all tables.
+
+
+👤 2. Employer
+
+Employer information lives in Users + Employers + Jobs + Payments.
+
+Attributes Employer uses/manages:
+
+From Users: Username, Email, Password (for login)
+
+From Employers:
+
+CompanyName
+
+Industry
+
+Address
+
+Phone
+
+Website
+
+About
+
+From Jobs:
+
+JobTitle
+
+JobDescription
+
+Location
+
+SalaryRange
+
+Deadline
+
+From Applications (view applicants for their jobs):
+
+JobSeekerID (who applied)
+
+Status (can update → Shortlisted, Hired, Rejected)
+
+From Payments (if you include):
+
+Amount
+
+PaymentDate
+
+Status
+
+✅ Unique power: Employer can post jobs and manage applicants.
+
+
+
+
+👤 3. Job Seeker
+
+Job seeker information lives in Users + JobSeekers + Applications.
+
+Attributes Job Seeker uses/manages:
+
+From Users: Username, Email, Password (for login)
+
+From JobSeekers:
+
+FullName
+
+Address
+
+Phone
+
+Skills
+
+Resume (path/file)
+
+From Applications:
+
+JobID (applied job)
+
+ApplicationDate
+
+Status (can see, but cannot change)
+
+✅ Unique power: Job Seeker can apply to jobs and manage their CV/profile.
+
+
+
+
+
+🔹 Summary (Role → Attributes)
+
+Admin → controls everything (Users, Employers, JobSeekers, Jobs, Applications, Payments).
+
+Employer → Company profile + Job posts + Applicant management + Payments.
+
+Job Seeker → Personal profile + CV + Applications.
+
+
+
+
+
+
+
+
+
+
+👤 1. Admin
+
+Unique Roles/Responsibilities:
+
+Manage all user accounts (approve/reject/delete Job Seekers & Employers).
+
+Manage job postings (approve/reject inappropriate job circulars).
+
+Monitor and control system activity (who applied, who posted, etc.).
+
+Generate reports (e.g., number of job posts per month, active users).
+
+Can ban/unban an employer or job seeker.
+
+✅ Unique Power: Full control over the system (like a “superuser”).
+
+👤 2. Employer (Company HR/Recruiter)
+
+Unique Roles/Responsibilities:
+
+Create and update company profile.
+
+Post new job circulars (job title, description, requirements, salary, deadline).
+
+View applications submitted by job seekers.
+
+Shortlist, accept, or reject applicants.
+
+Communicate with applicants (send interview invites, etc.).
+
+✅ Unique Power: Can post jobs and manage applicants (not available to job seekers).
+
+👤 3. Job Seeker (Candidate/Employee)
+
+Unique Roles/Responsibilities:
+
+Create and update CV/resume profile.
+
+Search and filter jobs (by title, category, location).
+
+Apply for jobs (upload CV / one-click apply).
+
+Track status of applications (Pending, Shortlisted, Rejected).
+
+Save jobs to favorites for later application.
+
+✅ Unique Power: Can apply to jobs and manage their own career profile (not available to employers).
+
+🔹 In short:
+
+Admin → Controls system & users.
+
+Employer → Posts and manages jobs + applicants.
+
+Job Seeker → Searches and applies for jobs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 Minimum Required Tables
+1. Users Table
+
+For storing login info of all users (Admin, Employers, Job Seekers).
+
+Users
+-------------------------------
+UserID (PK)
+Username
+Password
+Email
+Role   -- ('Admin', 'Employer', 'JobSeeker')
+
+2. Employers Table
+
+Details about employers (companies).
+👉 If you skip company profile, just keep EmployerName inside Jobs table instead.
+
+Employers
+-------------------------------
+EmployerID (PK)
+UserID (FK from Users)
+CompanyName
+Industry
+Address
+Phone
+Website
+About
+
+3. JobSeekers Table
+
+Details about job seekers (candidates).
+
+JobSeekers
+-------------------------------
+JobSeekerID (PK)
+UserID (FK from Users)
+FullName
+Address
+Phone
+Skills
+Resume (file path or text)
+
+4. Jobs Table
+
+Job postings created by employers.
+
+Jobs
+-------------------------------
+JobID (PK)
+EmployerID (FK from Employers)
+JobTitle
+JobDescription
+Location
+SalaryRange
+Deadline
+PostedDate
+
+5. Applications Table
+
+Tracks applications of job seekers to jobs.
+
+Applications
+-------------------------------
+ApplicationID (PK)
+JobID (FK from Jobs)
+JobSeekerID (FK from JobSeekers)
+ApplicationDate
+Status   -- ('Pending', 'Shortlisted', 'Hired', 'Rejected')
+
+6. Payments Table (Optional but Cool ✨)
+
+If you want employers to pay Admin to post jobs.
+
+Payments
+-------------------------------
+PaymentID (PK)
+EmployerID (FK from Employers)
+Amount
+PaymentDate
+Status -- ('Paid', 'Unpaid')
+
+
+
+
+
+
+
+
+🔹 Professional / Formal Names
+
+JobConnect – connecting job seekers with employers
+
+CareerHub – central hub for careers
+
+HireMate – helps employers hire and job seekers find jobs
+
+TalentLink – linking talent with opportunities
+
+WorkBridge – bridge between job seekers and companies
+
+NextStep Careers – helping users take their next career step
+
+JobSphere – jobs from all industries in one place
+
+CareerPortal – simple and professional
+
+EmployEase – makes the employment process easy
+
+JobVista – a broad view of job opportunities
+
+🔹 Creative / Modern Names
+
+Workify
+
+JobNest
+
+TalentTrack
+
+HireZone
+
+SkillMatch
+
+JobLinker
+
+CareerDock
+
+PathFinder
+
+DreamHire
+
+JobQuest

@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|e:\\c#\\home\\projects\\online recruitment system\\online recruitment system\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|solutionrelative:home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\jsdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|solutionrelative:jsdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\employerdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|solutionrelative:employerdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|solutionrelative:signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\jsapplicationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|solutionrelative:jsapplicationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\recoverpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{868101A0-A7E9-4ECF-A926-F88E91A0FE1F}|Online Recruitment System.csproj|solutionrelative:recoverpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-16T18:47:35.687Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "jsApplicationForm.cs",
+              "DocumentMoniker": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\jsApplicationForm.cs",
+              "RelativeDocumentMoniker": "jsApplicationForm.cs",
+              "ToolTip": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\jsApplicationForm.cs",
+              "RelativeToolTip": "jsApplicationForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T22:39:02.162Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "login.cs",
+              "DocumentMoniker": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\login.cs",
+              "RelativeDocumentMoniker": "login.cs",
+              "ToolTip": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\login.cs",
+              "RelativeToolTip": "login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T22:37:39.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "signUp.cs",
+              "DocumentMoniker": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\signUp.cs",
+              "RelativeDocumentMoniker": "signUp.cs",
+              "ToolTip": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\signUp.cs",
+              "RelativeToolTip": "signUp.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T22:37:00.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "recoverPassword.cs",
+              "DocumentMoniker": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\recoverPassword.cs",
+              "RelativeDocumentMoniker": "recoverPassword.cs",
+              "ToolTip": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\recoverPassword.cs",
+              "RelativeToolTip": "recoverPassword.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T22:37:56.039Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "home.cs",
+              "DocumentMoniker": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\home.cs",
+              "RelativeDocumentMoniker": "home.cs",
+              "ToolTip": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\home.cs",
+              "RelativeToolTip": "home.cs",
+              "ViewState": "AgIAAMAFAAAAAAAAAAAQwMwFAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T22:36:52.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "employerDashboard.cs",
+              "DocumentMoniker": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\employerDashboard.cs",
+              "RelativeDocumentMoniker": "employerDashboard.cs",
+              "ToolTip": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\employerDashboard.cs",
+              "RelativeToolTip": "employerDashboard.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAvwIAAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T22:37:14.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "jsDashboard.cs",
+              "DocumentMoniker": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\jsDashboard.cs",
+              "RelativeDocumentMoniker": "jsDashboard.cs",
+              "ToolTip": "E:\\C#\\Home\\Projects\\Online Recruitment System\\Online Recruitment System\\jsDashboard.cs",
+              "RelativeToolTip": "jsDashboard.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAAAGQAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T22:38:12.24Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

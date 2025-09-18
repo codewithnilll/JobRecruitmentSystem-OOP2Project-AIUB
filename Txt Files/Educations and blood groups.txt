@@ -1,0 +1,96 @@
+Diploma in Engineering
+Diploma in Business Studies
+Diploma in Graphic Design
+Diploma in Nursing
+Bachelor of Arts (BA) in English
+Bachelor of Business Administration (BBA)
+Bachelor of Science (BSc) in Computer Science
+Bachelor of Science (BSc) in Electrical Engineering
+Bachelor of Science (BSc) in Civil Engineering
+Bachelor of Science (BSc) in Mechanical Engineering
+Bachelor of Science (BSc) in Mathematics
+Bachelor of Pharmacy (BPharm)
+Bachelor of Laws (LLB)
+Bachelor of Medicine, Bachelor of Surgery (MBBS)
+Master of Arts (MA) in English
+Master of Business Administration (MBA)
+Master of Science (MSc) in Computer Science
+Master of Science (MSc) in Data Science
+Master of Science (MSc) in Electrical Engineering
+Master of Laws (LLM)
+Master of Public Health (MPH)
+Doctor of Philosophy (PhD) in Computer Science
+Doctor of Philosophy (PhD) in Business Administration
+Doctor of Medicine (MD)
+Doctor of Education (EdD)
+
+
+Blood groups :
+A+ (A Positive)
+A− (A Negative)
+B+ (B Positive)
+B− (B Negative)
+AB+ (AB Positive)
+AB− (AB Negative)
+O+ (O Positive)
+O− (O Negative)
+
+Experience levels
+Intern
+Entry-level
+Mid-level
+Senior
+Executive
+
+
+Christian
+Catholic
+Muslim
+Hindu
+Buddhist
+Jewish
+Sikh
+Atheist
+Other
+
+
+
+American
+Canadian
+British
+Australian
+Indian
+Chinese
+Mexican
+Brazilian
+German
+French
+Japanese
+Korean
+Russian
+Spanish
+Italian
+Other
+
+Single
+Married
+Divorced
+Other
+
+application status
+All
+Submitted
+Hired
+Rejected
+Rejected after interview
+Interview scheduled
+Updated
+
+Job status
+Pending
+Expired
+closed
+rejected
+active
+
+

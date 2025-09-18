@@ -1,0 +1,376 @@
+Admin dashboard
+
+1.Displaying values in dgvUsers
+SELECT 
+	userID, 
+	firstName, 
+	lastName, 
+	gender, 
+	role, 
+	phone, 
+	email, 
+	password 
+	FROM UsersTable WHERE 1=1
+
+2.Displaying values in dgvEmployers
+SELECT 
+    u.userID        AS employerid,
+    u.firstName     AS firstname,
+    u.lastName      AS lastname,
+    e.companyName   AS company,
+    e.companyPhone  AS companyphone,   -- ONLY company phone
+    u.Email         AS emailaddress,
+    e.website       AS companywebsite
+FROM UsersTable u
+INNER JOIN EmployersTable e
+    ON u.userID = e.employerid
+WHERE LOWER(u.role) = 'employer';
+
+3. Displaying values in dgvJobseekers
+SELECT 
+    j.jsid,
+    u.firstName AS jsFirstName,
+    u.lastName AS jsLastName,
+    j.dob,
+    j.bloodgroup,
+    j.nationality,
+    j.maritalstatus,
+    j.jsaddress,
+    j.education,
+    (SELECT COUNT(*) FROM ApplicationsTable a WHERE a.jsid = j.jsid) AS applicationsno
+FROM JobSeekersTable j
+INNER JOIN UsersTable u ON j.jsid = u.userID
+WHERE LOWER(u.role) = 'job seeker'
+
+
+
+
+
+4.Displaying values in dgvJobs
+SELECT 
+    j.jobid,
+    j.jobtitle,
+    (u.firstName + ' ' + u.lastName + ' (' + j.employerid + ')') AS postedby,
+    j.status AS jobstatus,   -- alias to avoid reserved keyword issues
+    e.companyName AS company,
+    j.employmenttype,
+    j.salaryrange,
+    j.experiencerequired,
+    j.publisheddate,
+    j.publishedtime
+FROM JobsTable j
+INNER JOIN EmployersTable e ON j.employerid = e.employerid
+INNER JOIN UsersTable u ON e.employerid = u.userID
+WHERE 1=1
+
+
+5.Displaying values in dgvPayments
+SELECT 
+    p.paymentid,
+    (u.firstName + ' ' + u.lastName + ' (' + p.employerid + ')') AS employer,
+    p.jobid,
+    p.paymentmethod,
+    p.phonenumber,
+    p.amount,
+    j.publisheddate,
+    j.publishedtime,
+    p.paymentstatus
+FROM PaymentsTable p
+INNER JOIN EmployersTable e ON p.employerid = e.employerid
+INNER JOIN UsersTable u ON e.employerid = u.userID
+INNER JOIN JobsTable j ON p.jobid = j.jobid
+WHERE 1=1"
+
+
+6.Displaying values in dgvApplications
+SELECT 
+    a.applicationId,
+    a.status AS applicationstatus,
+    (j.jobtitle + ' (' + j.jobid + ')') AS job,
+    (u.firstName + ' ' + u.lastName + ' (' + a.jsid + ')') AS jobseeker,
+    j.salaryrange AS salaryrangeofjob,
+    a.expectedSalary,
+    a.applieddate,
+    a.interviewDate,
+    a.interviewTime
+FROM ApplicationsTable a
+INNER JOIN JobsTable j ON a.jobid = j.jobid
+INNER JOIN UsersTable u ON a.jsid = u.userID
+WHERE 1=1
+
+7. Default dashboard stats
+ // 1. Total User Accounts
+ string sql1 = "SELECT COUNT(*) AS TotalUsers FROM UsersTable";
+ DataSet ds1 = this.Da.ExecuteQuery(sql1);
+ tbdashboard1.Text = ds1.Tables[0].Rows[0]["TotalUsers"] != DBNull.Value
+     ? ds1.Tables[0].Rows[0]["TotalUsers"].ToString() : "0";
+
+ // 2. Users Awaiting Admin Verification
+ string sql2 = "SELECT COUNT(*) AS PendingUsers FROM UsersTable WHERE Role = 'Pending'";
+ DataSet ds2 = this.Da.ExecuteQuery(sql2);
+ tbdashboard2.Text = ds2.Tables[0].Rows[0]["PendingUsers"] != DBNull.Value
+     ? ds2.Tables[0].Rows[0]["PendingUsers"].ToString() : "0";
+
+ // 3. Jobs Created in the System
+ string sql3 = "SELECT COUNT(*) AS TotalJobs FROM JobsTable";
+ DataSet ds3 = this.Da.ExecuteQuery(sql3);
+ tbdashboard3.Text = ds3.Tables[0].Rows[0]["TotalJobs"] != DBNull.Value
+     ? ds3.Tables[0].Rows[0]["TotalJobs"].ToString() : "0";
+
+ // 4. Total Applications by Candidates
+ string sql4 = "SELECT COUNT(*) AS TotalApplications FROM ApplicationsTable";
+ DataSet ds4 = this.Da.ExecuteQuery(sql4);
+ tbdashboard4.Text = ds4.Tables[0].Rows[0]["TotalApplications"] != DBNull.Value
+     ? ds4.Tables[0].Rows[0]["TotalApplications"].ToString() : "0";
+
+ // 5. Postings Pending Admin Approval
+ string sql5 = "SELECT COUNT(*) AS PendingJobs FROM JobsTable WHERE status = 'Pending'";
+ DataSet ds5 = this.Da.ExecuteQuery(sql5);
+ tbdashboard5.Text = ds5.Tables[0].Rows[0]["PendingJobs"] != DBNull.Value
+     ? ds5.Tables[0].Rows[0]["PendingJobs"].ToString() : "0";
+
+ // 6. Applications Marked as Not Qualified
+ string sql6 = @"SELECT COUNT(*) AS RejectedApplications FROM ApplicationsTable 
+WHERE status IN ('Rejected', 'Rejected after interview')";
+ DataSet ds6 = this.Da.ExecuteQuery(sql6);
+ tbdashboard6.Text = ds6.Tables[0].Rows[0]["RejectedApplications"] != DBNull.Value
+     ? ds6.Tables[0].Rows[0]["RejectedApplications"].ToString() : "0";
+
+ // 7. Candidates Hired Through the Platform
+ string sql7 = "SELECT COUNT(*) AS HiredCandidates FROM ApplicationsTable WHERE status = 'Hired'";
+ DataSet ds7 = this.Da.ExecuteQuery(sql7);
+ tbdashboard7.Text = ds7.Tables[0].Rows[0]["HiredCandidates"] != DBNull.Value
+     ? ds7.Tables[0].Rows[0]["HiredCandidates"].ToString() : "0";
+
+ // 8. Earnings from Employer Job Postings
+ string sql8 = "SELECT ISNULL(SUM(amount), 0) AS TotalEarnings FROM PaymentsTable WHERE paymentstatus = 'Completed'";
+ DataSet ds8 = this.Da.ExecuteQuery(sql8);
+ decimal earnings = ds8.Tables[0].Rows[0]["TotalEarnings"] != DBNull.Value
+     ? Convert.ToDecimal(ds8.Tables[0].Rows[0]["TotalEarnings"]) : 0;
+ tbdashboard8.Text = earnings.ToString("0.00");
+
+
+Employer dashboard
+
+1.Displaying values in dgvApplications
+SELECT DISTINCT
+    j.jobTitle AS job,
+    a.applicationId AS applicationid,
+    (u.firstName + ' ' + u.lastName) AS jobseeker,
+    j.salaryRange AS salrange,
+    a.expectedSalary AS expectedsal,
+    a.appliedDate AS applieddate,
+    a.interviewDate AS interviewdate,
+    a.interviewTime AS interviewtime,
+    a.status AS applicationstatus
+FROM ApplicationsTable a
+INNER JOIN JobsTable j ON a.jobid = j.jobid
+INNER JOIN JobSeekersTable js ON a.jsid = js.jsid
+INNER JOIN UsersTable u ON js.jsid = u.userID
+WHERE j.employerId = @employerID
+
+2.Displaying values in dgvJobseekers
+SELECT DISTINCT
+    j.jobtitle AS JobTitle,
+    u.firstName AS firstname,
+    u.lastName AS lastname,
+    u.gender AS gender,
+    js.bloodgroup AS bloodgroup,
+    js.nationality AS nationality,
+    js.maritalstatus AS maritalstatus,
+    js.jsaddress AS address,
+    u.phone AS jsphone,
+    js.dob AS dob,
+    u.email AS emailaddress
+FROM JobSeekersTable js
+INNER JOIN UsersTable u ON js.jsid = u.userID
+INNER JOIN ApplicationsTable a ON js.jsid = a.jsid
+INNER JOIN JobsTable j ON a.jobid = j.jobid
+WHERE j.employerid = @employerID
+
+
+3.Displaying values in dgvJobs
+SELECT 
+    j.jobtitle AS JobTitle,
+    j.status AS Status,
+    e.industry AS Industry,
+    e.companyname AS Company,
+    j.salaryrange AS SalaryRange,
+    j.experiencerequired AS ExperienceRequired,
+    j.deadline AS Deadline,
+    j.publisheddate AS PublishedDate,
+    j.publishedtime AS PublishedTime,
+    COUNT(a.applicationId) AS NumberOfApplications
+FROM JobsTable j
+INNER JOIN EmployersTable e ON j.employerid = e.employerid
+LEFT JOIN ApplicationsTable a ON j.jobid = a.jobid
+WHERE j.employerid = @employerID
+
+
+4. Default dashboard stats
+                // 1. Total jobs currently listed (posted by this specific employer)
+                string sql1 = $"SELECT COUNT(*) AS TotalJobs FROM JobsTable WHERE employerid = '{_userID}'";
+                DataSet ds1 = da.ExecuteQuery(sql1);
+                tbdashboard1.Text = ds1.Tables[0].Rows[0]["TotalJobs"] != DBNull.Value
+                    ? ds1.Tables[0].Rows[0]["TotalJobs"].ToString() : "0";
+
+                // 2. Jobs still open for applications (this employer's jobs with status "Active")
+                string sql2 = $"SELECT COUNT(*) AS ActiveJobs FROM JobsTable WHERE employerid = '{_userID}' AND status = 'Active'";
+                DataSet ds2 = da.ExecuteQuery(sql2);
+                tbdashboard2.Text = ds2.Tables[0].Rows[0]["ActiveJobs"] != DBNull.Value
+                    ? ds2.Tables[0].Rows[0]["ActiveJobs"].ToString() : "0";
+
+                // 3. Jobs that are expired or filled (this employer's jobs with status "Closed" and "Expired")
+                string sql3 = $"SELECT COUNT(*) AS ClosedExpiredJobs FROM JobsTable WHERE employerid = '{_userID}' AND status IN ('Closed', 'Expired')";
+                DataSet ds3 = da.ExecuteQuery(sql3);
+                tbdashboard3.Text = ds3.Tables[0].Rows[0]["ClosedExpiredJobs"] != DBNull.Value
+                    ? ds3.Tables[0].Rows[0]["ClosedExpiredJobs"].ToString() : "0";
+
+                // 4. Total applications across all jobs (total applications for all jobs posted by this employer)
+                string sql4 = $@"
+SELECT COUNT(*) AS TotalApplications 
+FROM ApplicationsTable a
+INNER JOIN JobsTable j ON a.jobid = j.jobid
+WHERE j.employerid = '{_userID}'";
+                DataSet ds4 = da.ExecuteQuery(sql4);
+                tbdashboard4.Text = ds4.Tables[0].Rows[0]["TotalApplications"] != DBNull.Value
+                    ? ds4.Tables[0].Rows[0]["TotalApplications"].ToString() : "0";
+
+                // 5. Applications awaiting employer action (applications for this employer's jobs with status "Submitted")
+                string sql5 = $@"
+SELECT COUNT(*) AS SubmittedApplications 
+FROM ApplicationsTable a
+INNER JOIN JobsTable j ON a.jobid = j.jobid
+WHERE j.employerid = '{_userID}' AND a.status = 'Submitted'";
+                DataSet ds5 = da.ExecuteQuery(sql5);
+                tbdashboard5.Text = ds5.Tables[0].Rows[0]["SubmittedApplications"] != DBNull.Value
+                    ? ds5.Tables[0].Rows[0]["SubmittedApplications"].ToString() : "0";
+
+                // 6. Interviews arranged with candidates (applications for this employer's jobs with status "Interview Scheduled")
+                string sql6 = $@"
+SELECT COUNT(*) AS InterviewScheduled 
+FROM ApplicationsTable a
+INNER JOIN JobsTable j ON a.jobid = j.jobid
+WHERE j.employerid = '{_userID}' AND a.status = 'Interview Scheduled'";
+                DataSet ds6 = da.ExecuteQuery(sql6);
+                tbdashboard6.Text = ds6.Tables[0].Rows[0]["InterviewScheduled"] != DBNull.Value
+                    ? ds6.Tables[0].Rows[0]["InterviewScheduled"].ToString() : "0";
+
+                // 7. Candidates who were not selected (applications for this employer's jobs with status "Rejected" and "Rejected after interview")
+                string sql7 = $@"
+SELECT COUNT(*) AS RejectedApplications 
+FROM ApplicationsTable a
+INNER JOIN JobsTable j ON a.jobid = j.jobid
+WHERE j.employerid = '{_userID}' AND a.status IN ('Rejected', 'Rejected after interview')";
+                DataSet ds7 = da.ExecuteQuery(sql7);
+                tbdashboard7.Text = ds7.Tables[0].Rows[0]["RejectedApplications"] != DBNull.Value
+                    ? ds7.Tables[0].Rows[0]["RejectedApplications"].ToString() : "0";
+
+                // 8. Candidates successfully recruited (applications for this employer's jobs with status "Hired")
+                string sql8 = $@"
+SELECT COUNT(*) AS HiredCandidates 
+FROM ApplicationsTable a
+INNER JOIN JobsTable j ON a.jobid = j.jobid
+WHERE j.employerid = '{_userID}' AND a.status = 'Hired'";
+                DataSet ds8 = da.ExecuteQuery(sql8);
+                tbdashboard8.Text = ds8.Tables[0].Rows[0]["HiredCandidates"] != DBNull.Value
+                    ? ds8.Tables[0].Rows[0]["HiredCandidates"].ToString() : "0";
+
+
+
+Jobseeker dashboard
+1.Displaying values in dgvApplications
+SELECT 
+    j.jobtitle AS JobTitle,
+    a.status AS ApplicationStatus,
+    j.salaryrange AS SalaryRange,
+    a.expectedSalary AS ExpectedSalary,
+    a.applieddate AS AppliedDate,
+    a.interviewDate AS InterviewDate,
+    a.interviewTime AS InterviewTime,
+    a.applicationId
+FROM ApplicationsTable a
+INNER JOIN JobsTable j ON a.jobid = j.jobid
+WHERE a.jsid = @jobseekerID
+ORDER BY a.applieddate DESC
+
+2.Displaying values in dgvJobs
+SELECT 
+    j.jobid,
+    e.companyname AS companyname,
+    e.industry AS industry,
+    e.address AS address,
+    e.website AS website,
+    e.about AS About,
+    j.jobtitle AS jobtitle,
+    j.employmenttype AS employmenttype,
+    j.salaryrange AS salaryrange,
+    j.experiencerequired AS experiencerequired,
+    j.deadline AS deadline
+FROM JobsTable j
+INNER JOIN EmployersTable e ON j.employerid = e.employerid
+WHERE j.status = 'Active' AND j.deadline >= GETDATE()
+
+
+3.Displaying values in dgvSavedJobs
+ SELECT 
+     j.jobid,
+     j.jobtitle AS jobtitle,
+     e.companyname AS companyname,
+     e.industry AS industry,
+     e.address AS address,
+     e.website AS website,
+     e.about AS about,
+     j.employmenttype AS employmenttype,
+     j.salaryrange AS salaryrange,
+     j.experiencerequired AS experiencerequired,
+     j.deadline AS deadline,
+     s.savedDate AS savedDate
+ FROM SavedJobsTable s
+ INNER JOIN JobsTable j ON s.jobId = j.jobid
+ INNER JOIN EmployersTable e ON j.employerid = e.employerid
+ WHERE s.jsid = '{_userID}'
+
+
+4. Default dashboard stats
+// 1. Total jobs you've applied for (total applications by this jobseeker)
+string sql1 = $"SELECT COUNT(*) AS TotalApplications FROM ApplicationsTable WHERE jsid = '{_userID}'";
+DataSet ds1 = da.ExecuteQuery(sql1);
+tbdashboard1.Text = ds1.Tables[0].Rows[0]["TotalApplications"] != DBNull.Value
+    ? ds1.Tables[0].Rows[0]["TotalApplications"].ToString() : "0";
+
+// 2. Total applications under review (applications with status "Submitted")
+string sql2 = $"SELECT COUNT(*) AS SubmittedApplications FROM ApplicationsTable WHERE jsid = '{_userID}' AND status = 'Submitted'";
+DataSet ds2 = da.ExecuteQuery(sql2);
+tbdashboard2.Text = ds2.Tables[0].Rows[0]["SubmittedApplications"] != DBNull.Value
+    ? ds2.Tables[0].Rows[0]["SubmittedApplications"].ToString() : "0";
+
+// 3. Interview scheduled for you (applications with status "Interview Scheduled")
+string sql3 = $"SELECT COUNT(*) AS InterviewScheduled FROM ApplicationsTable WHERE jsid = '{_userID}' AND status = 'Interview Scheduled'";
+DataSet ds3 = da.ExecuteQuery(sql3);
+tbdashboard3.Text = ds3.Tables[0].Rows[0]["InterviewScheduled"] != DBNull.Value
+    ? ds3.Tables[0].Rows[0]["InterviewScheduled"].ToString() : "0";
+
+// 4. Applications not successful (applications with status "Rejected" and "Rejected after interview")
+string sql4 = $"SELECT COUNT(*) AS RejectedApplications FROM ApplicationsTable WHERE jsid = '{_userID}' AND status IN ('Rejected', 'Rejected after interview')";
+DataSet ds4 = da.ExecuteQuery(sql4);
+tbdashboard4.Text = ds4.Tables[0].Rows[0]["RejectedApplications"] != DBNull.Value
+    ? ds4.Tables[0].Rows[0]["RejectedApplications"].ToString() : "0";
+
+// 5. Jobs saved for later viewing (total jobs saved by this jobseeker)
+string sql5 = $"SELECT COUNT(*) AS TotalSavedJobs FROM SavedJobsTable WHERE jsid = '{_userID}'";
+DataSet ds5 = da.ExecuteQuery(sql5);
+tbdashboard5.Text = ds5.Tables[0].Rows[0]["TotalSavedJobs"] != DBNull.Value
+    ? ds5.Tables[0].Rows[0]["TotalSavedJobs"].ToString() : "0";
+
+// 6. Your first application date (earliest application date by this jobseeker)
+string sql6 = $"SELECT MIN(applieddate) AS FirstApplicationDate FROM ApplicationsTable WHERE jsid = '{_userID}'";
+DataSet ds6 = da.ExecuteQuery(sql6);
+tbdashboard6.Text = ds6.Tables[0].Rows[0]["FirstApplicationDate"] != DBNull.Value
+    ? ds6.Tables[0].Rows[0]["FirstApplicationDate"].ToString() : "Not applied yet";
+
+// 7. Most recent application date (latest application date by this jobseeker)
+string sql7 = $"SELECT MAX(applieddate) AS LastApplicationDate FROM ApplicationsTable WHERE jsid = '{_userID}'";
+DataSet ds7 = da.ExecuteQuery(sql7);
+tbdashboard7.Text = ds7.Tables[0].Rows[0]["LastApplicationDate"] != DBNull.Value
+    ? ds7.Tables[0].Rows[0]["LastApplicationDate"].ToString() : "Not applied yet";

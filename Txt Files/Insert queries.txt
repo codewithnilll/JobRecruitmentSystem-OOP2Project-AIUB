@@ -1,0 +1,315 @@
+CREATE TABLE UsersTable (
+    Gender NVARCHAR(250) NULL,
+    userID NVARCHAR(250) NOT NULL PRIMARY KEY,
+    firstName NVARCHAR(250) NULL,
+    lastName NVARCHAR(250) NULL,
+    Role NVARCHAR(250) NULL,
+    Phone VARCHAR(250) NULL,
+    Email NVARCHAR(250) NULL,
+    Password NVARCHAR(250) NULL
+);
+
+INSERT INTO UsersTable ([User ID], [First Name], [Last Name], Gender, Phone, Email, Role)
+VALUES
+-- Admin
+('A-001', 'Jason', 'Brody', 'Male', '(202) 555-0101', 'jason.admin@jobConnect.com', 'Admin'),
+
+
+-- Additional Job Seeker Users (better matches for existing jobs)
+INSERT INTO UsersTable (Gender, userID, firstName, lastName, Role, Phone, Email, Password)
+VALUES
+('Male', 'JS-301', 'Raj', 'Patel', 'Job seeker', '(555) 111-2222', 'raj.patel@email.com', 'Js@301'),
+('Female', 'JS-302', 'Maria', 'Garcia', 'Job seeker', '(555) 222-3333', 'maria.garcia@email.com', 'Js@302'),
+('Male', 'JS-303', 'Kenji', 'Tanaka', 'Job seeker', '(555) 333-4444', 'kenji.tanaka@email.com', 'Js@303'),
+('Female', 'JS-304', 'Lisa', 'Chen', 'Job seeker', '(555) 444-5555', 'lisa.chen@email.com', 'Js@304'),
+('Male', 'JS-305', 'Ahmed', 'Hassan', 'Job seeker', '(555) 555-6666', 'ahmed.hassan@email.com', 'Js@305');
+
+
+
+-- Employers
+('E-110', 'Rob', 'Halford', 'Male', '(202) 555-0102', 'rob@northstar.com', 'Employer'),
+('E-102', 'Kirk', 'Hammett', 'Male', '(202) 555-0103', 'kirk@bluewave.com', 'Employer'),
+('E-103', 'Alissa', 'White', 'Female', '(202) 555-0104', 'alissa@crestpoint.com', 'Employer'),
+('E-111', 'Alex', 'Terrible', 'Male', '(202) 555-0105', 'alex@ironclad.com', 'Employer'),
+('E-105', 'Angela', 'Gossouw', 'Female', '(202) 555-0106', 'angela@silveroak.com', 'Employer'),
+('E-106', 'Rob', 'Trujillo', 'Male', '(202) 555-0107', 'rob@vertexglobal.com', 'Employer'),
+('E-107', 'Nita', 'Strauss', 'Female', '(202) 555-0108', 'nita@nextera.com', 'Employer'),
+('E-108', 'Dave', 'Mustaine', 'Male', '(202) 555-0109', 'dave@skylineventures.com', 'Employer'),
+('E-109', 'Fernanda', 'Lira', 'Female', '(202) 555-0110', 'lira@quantumedge.com', 'Employer');
+
+
+
+UPDATE UsersTable SET Password = 'Admin@123' WHERE [User ID] = 'A-001';
+UPDATE UsersTable SET Password = 'Emp@101'   WHERE [User ID] = 'E-101';
+UPDATE UsersTable SET Password = 'Emp@102'   WHERE [User ID] = 'E-102';
+UPDATE UsersTable SET Password = 'Emp@103'   WHERE [User ID] = 'E-103';
+UPDATE UsersTable SET Password = 'Emp@104'   WHERE [User ID] = 'E-104';
+UPDATE UsersTable SET Password = 'Emp@105'   WHERE [User ID] = 'E-105';
+UPDATE UsersTable SET Password = 'Emp@106'   WHERE [User ID] = 'E-106';
+UPDATE UsersTable SET Password = 'Emp@107'   WHERE [User ID] = 'E-107';
+UPDATE UsersTable SET Password = 'Emp@108'   WHERE [User ID] = 'E-108';
+UPDATE UsersTable SET Password = 'Emp@109'   WHERE [User ID] = 'E-109';
+
+CREATE TABLE EmployersTable (
+employerid NVARCHAR(250) PRIMARY KEY,              -- same as UserID
+companyname NVARCHAR(100) NOT NULL,
+industry NVARCHAR(100),
+address NVARCHAR(200),
+website NVARCHAR(100),
+phone VARCHAR(250),
+about NVARCHAR(MAX),
+CONSTRAINT FK_Employers_Users FOREIGN KEY (employerid) REFERENCES UsersTable(userID)
+);
+
+
+INSERT INTO EmployersTable (employerid, companyname, industry, address, website, companyphone, about)
+VALUES
+('E-110', 'Northstar Solutions', 'Software Development', '500 Madison Ave, New York, NY 10022', 'www.northstarsolutions.com', '+1-212-555-1010', 'We build scalable enterprise and cloud software solutions.'),
+('E-102', 'BlueWave Technologies', 'Marine & Environmental Tech', '245 Ocean Blvd, Miami, FL 33139', 'www.bluewavetech.com', '+1-305-555-1020', 'Innovative marine technology and sustainable water solutions.'),
+('E-103', 'CrestPoint Systems', 'Healthcare IT', '780 Health St, Boston, MA 02118', 'www.crestpointsystems.com', '+1-617-555-1030', 'Providing advanced healthcare IT systems and patient solutions.'),
+('E-111', 'Ironclad Dynamics', 'Aerospace & Defense', '1600 Defense Way, Arlington, VA 22203', 'www.ironcladdynamics.com', '+1-703-555-1040', 'Engineering defense and aerospace innovations for the future.'),
+('E-105', 'SilverOak Labs', 'Biotechnology', '320 Innovation Dr, San Diego, CA 92121', 'www.silveroaklabs.com', '+1-858-555-1050', 'Advancing biotech research with cutting-edge laboratory solutions.'),
+('E-106', 'Vertex Global', 'Construction & Real Estate', '450 Market St, San Francisco, CA 94105', 'www.vertexglobal.com', '+1-415-555-1060', 'Experts in infrastructure, real estate, and smart city projects.'),
+('E-107', 'NextEra Innovations', 'Consumer Electronics', '900 Tech Park, Austin, TX 73301', 'www.nexterainnovations.com', '+1-512-555-1070', 'Delivering futuristic consumer electronics and smart devices.'),
+('E-108', 'Skyline Ventures', 'Venture Capital & Investments', '200 Bay St, San Jose, CA 95113', 'www.skylineventures.com', '+1-408-555-1080', 'Investing in groundbreaking startups and global entrepreneurs.'),
+('E-109', 'QuantumEdge Corp', 'Artificial Intelligence & IT', '777 Innovation Ave, Seattle, WA 98109', 'www.quantumedgecorp.com', '+1-206-555-1090', 'Driving the future of AI, machine learning, and IT solutions.');
+
+
+CREATE TABLE JobsTable (
+    jobid NVARCHAR(250) PRIMARY KEY,          -- Job ID (e.g., J-101)
+    employerid NVARCHAR(250) NOT NULL,        -- FK to EmployersTable
+    jobtitle NVARCHAR(250) NOT NULL,
+    employmenttype NVARCHAR(250) NOT NULL,    -- e.g., Full-time, Part-time
+    salaryrange NVARCHAR(250) NOT NULL,
+    experiencerequired NVARCHAR(50) NOT NULL, -- e.g., 1 year, Entry-level
+    publisheddate NVARCHAR(50) NOT NULL,      -- e.g., 7 Dec, 2001
+    publishedtime NVARCHAR(50) NOT NULL,      -- e.g., 6:23 p.m.
+    deadline NVARCHAR(50) NOT NULL,           -- e.g., 30 Sep, 2025
+    status NVARCHAR(50) NOT NULL,             -- e.g., Active, Pending
+
+    -- Foreign key linking to Employers table
+    CONSTRAINT FK_Jobs_Employers FOREIGN KEY (employerid)
+        REFERENCES EmployersTable(employerid)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+
+INSERT INTO JobsTable (jobid, employerid, jobtitle, employmenttype, salaryrange, experiencerequired, publisheddate, publishedtime, deadline, status)
+VALUES
+('J-7500', 'E-110', 'Junior Software Developer', 'Full-time', '$60,000 - $80,000 USD', '1 year', '15 Aug, 2025', '9:30 a.m.', '30 Oct, 2025', 'Active'),
+('J-7501', 'E-102', 'Marine Equipment Technician', 'Full-time', '$50,000 - $70,000 USD', '2 years', '20 Jul, 2025', '2:15 p.m.', '1 Dec, 2025', 'Active'),
+('J-7502', 'E-103', 'Healthcare IT Support', 'Full-time', '$55,000 - $75,000 USD', '1 year', '12 Jun, 2025', '10:45 a.m.', '7 Dec, 2025', 'Active'),
+('J-7503', 'E-111', 'Aerospace Engineering Assistant', 'Full-time', '$65,000 - $85,000 USD', '2 years', '1 Jul, 2025', '8:00 a.m.', '8 Nov, 2025', 'Pending'),
+('J-7504', 'E-105', 'Lab Research Assistant', 'Full-time', '$50,000 - $68,000 USD', 'Entry-level', '25 Jun, 2025', '11:20 a.m.', '1 Jan, 2026', 'Active'),
+('J-7505', 'E-106', 'Junior Civil Engineer', 'Full-time', '$58,000 - $78,000 USD', '1 year', '5 Aug, 2025', '3:00 p.m.', '15 Jan, 2026', 'Active'),
+('J-7506', 'E-107', 'Electronics Product Tester', 'Full-time', '$45,000 - $65,000 USD', 'No experience', '18 Jul, 2025', '1:10 p.m.', '25 Dec, 2025', 'Active'),
+('J-7507', 'E-108', 'Investment Analyst', 'Full-time', '$60,000 - $80,000 USD', '2 years', '30 Jun, 2025', '4:40 p.m.', '5 Dec, 2025', 'Active'),
+('J-7508', 'E-109', 'AI Research Intern', 'Full-time', '$50,000 - $70,000 USD', 'Entry-level', '10 Aug, 2025', '9:50 a.m.', '20 Dec, 2025', 'Active');
+
+
+
+
+CREATE TABLE PaymentsTable (
+    paymentid NVARCHAR(250) PRIMARY KEY,       -- Unique Payment ID (e.g., P-001)
+    employerid NVARCHAR(250) NOT NULL,         -- FK → EmployersTable (who paid)
+    jobid NVARCHAR(250) NOT NULL,              -- FK → JobsTable (which job payment is for)
+    paymentmethod NVARCHAR(100) NOT NULL,      -- e.g., Credit Card, PayPal, Bank Transfer
+    phonenumber NVARCHAR(20) NOT NULL,         -- The number from which payment is made
+    amount DECIMAL(10,2) NOT NULL,             -- Amount paid (e.g., 199.00)
+    paymentstatus NVARCHAR(50) NOT NULL,       -- e.g., Completed, Pending, Failed, Refunded
+
+    -- Foreign key linking to Employers table
+    CONSTRAINT FK_Payments_Employers FOREIGN KEY (employerid)
+        REFERENCES EmployersTable(employerid)
+        ON DELETE NO ACTION,
+    
+    -- Foreign key linking to Jobs table
+    CONSTRAINT FK_Payments_Jobs FOREIGN KEY (jobid)
+        REFERENCES JobsTable(jobid)
+        ON DELETE NO ACTION
+);
+
+
+
+INSERT INTO PaymentsTable (paymentid, employerid, jobid, paymentmethod, phonenumber, amount)
+VALUES
+('P-99230', 'E-110', 'J-7500', 'Bkash', '+1-555-0123', 199.00),
+('P-99231', 'E-102', 'J-7501', 'Nagad', '+1-555-0124', 199.00),
+('P-99232', 'E-103', 'J-7502', 'Rocket', '+1-555-0125', 199.00),
+('P-99233', 'E-111', 'J-7503', 'Bkash', '+1-555-0126', 199.00),
+('P-99234', 'E-105', 'J-7504', 'Nagad', '+1-555-0127', 199.00),
+('P-99235', 'E-106', 'J-7505', 'Rocket', '+1-555-0128', 199.00),
+('P-99236', 'E-107', 'J-7506', 'Bkash', '+1-555-0129', 199.00),
+('P-99237', 'E-108', 'J-7507', 'Nagad', '+1-555-0130', 199.00),
+('P-99238', 'E-109', 'J-7508', 'Rocket', '+1-555-0131', 199.00);
+
+
+
+// delete rows in jobs and payments table
+-- Replace with your actual JobID and PaymentID values
+DECLARE @JobID NVARCHAR(50) = 'J-7510';
+DECLARE @PaymentID NVARCHAR(50) = 'PM-99239';
+
+-- Delete payment first
+DELETE FROM PaymentsTable WHERE paymentid = @PaymentID AND jobid = @JobID;
+
+-- Then delete the job
+DELETE FROM JobsTable WHERE jobid = @JobID;
+
+
+CREATE TABLE JobSeekersTable (
+    jsid NVARCHAR(250) PRIMARY KEY,
+    jsaddress NVARCHAR(250) NOT NULL,
+    education NVARCHAR(250) NOT NULL,
+    skills NVARCHAR(MAX) NOT NULL,
+    dob NVARCHAR(250) NOT NULL,
+    bloodgroup NVARCHAR(250) NOT NULL,
+    expectedsalary NVARCHAR(250) NOT NULL,
+    experiencelevel NVARCHAR(250) NOT NULL,
+    nationality NVARCHAR(250) NOT NULL,
+    religion NVARCHAR(250) NOT NULL,
+    maritalstatus NVARCHAR(250) NOT NULL,
+    personalwebsite NVARCHAR(250) NULL,
+    languages NVARCHAR(250) NOT NULL,
+    
+    CONSTRAINT FK_JobSeekers_Users FOREIGN KEY (jsid)
+        REFERENCES UsersTable(userID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+
+-- Job Seeker Users (JS prefix)
+INSERT INTO UsersTable (Gender, userID, firstName, lastName, Role, Phone, Email, Password)
+VALUES
+('Male', 'JS-201', 'Michael', 'Chen', 'Job seeker', '(555) 123-4567', 'michael.chen@email.com', 'Js@201'),
+('Female', 'JS-202', 'Sarah', 'Johnson', 'Job seeker', '(555) 234-5678', 'sarah.johnson@email.com', 'Js@202'),
+('Male', 'JS-203', 'David', 'Martinez', 'Job seeker', '(555) 345-6789', 'david.martinez@email.com', 'Js@203'),
+('Female', 'JS-204', 'Emily', 'Wang', 'Job seeker', '(555) 456-7890', 'emily.wang@email.com', 'Js@204'),
+('Male', 'JS-205', 'James', 'Brown', 'Job seeker', '(555) 567-8901', 'james.brown@email.com', 'Js@205'),
+('Female', 'JS-206', 'Jessica', 'Davis', 'Job seeker', '(555) 678-9012', 'jessica.davis@email.com', 'Js@206'),
+('Male', 'JS-207', 'Daniel', 'Garcia', 'Job seeker', '(555) 789-0123', 'daniel.garcia@email.com', 'Js@207'),
+('Female', 'JS-208', 'Jennifer', 'Rodriguez', 'Job seeker', '(555) 890-1234', 'jennifer.rod@email.com', 'Js@208'),
+('Male', 'JS-209', 'Christopher', 'Lee', 'Job seeker', '(555) 901-2345', 'chris.lee@email.com', 'Js@209'),
+('Female', 'JS-210', 'Amanda', 'Wilson', 'Job seeker', '(555) 012-3456', 'amanda.wilson@email.com', 'Js@210');
+
+
+
+
+
+
+INSERT INTO JobSeekersTable (jsid, jsaddress, education, skills, dob, bloodgroup, expectedsalary, experiencelevel, nationality, religion, maritalstatus, personalwebsite, languages)
+VALUES
+-- 1. Software Developer
+('JS-201', '123 Tech Avenue, San Francisco, CA 94102', 'BS Computer Science - Stanford', 'C#, .NET, SQL, JavaScript', '12 Mar, 1996', 'O+', '65000-85000', 'Junior', 'American', 'Christian', 'Single', 'michaelchen.dev', 'English, Mandarin'),
+
+-- 2. Marine Technician  
+('JS-202', '456 Ocean Drive, Miami, FL 33139', 'Associate Marine Technology - Florida Tech', 'Marine Electronics, Engine Repair', '05 Aug, 1993', 'A+', '52000-72000', 'Mid-level', 'American', 'Catholic', 'Married', '', 'English, Spanish'),
+
+-- 3. Healthcare IT Specialist
+('JS-203', '789 Medical Blvd, Boston, MA 02118', 'BS Health Informatics - Northeastern', 'EPIC Systems, HIPAA, EHR Support', '19 Dec, 1991', 'B+', '58000-78000', 'Mid-level', 'Canadian', 'Jewish', 'Single', 'sarahhealthtech.com', 'English, French'),
+
+-- 4. Aerospace Engineer
+('JS-204', '321 Defense Highway, Arlington, VA 22203', 'MS Aerospace Engineering - MIT', 'CAD, MATLAB, Structural Analysis', '22 Jun, 1990', 'AB+', '70000-90000', 'Senior', 'American', 'Agnostic', 'Divorced', 'david-aero-engineer.com', 'English, German'),
+
+-- 5. Biotech Researcher
+('JS-205', '654 Research Way, San Diego, CA 92121', 'PhD Molecular Biology - UC San Diego', 'PCR, Cell Culture, Data Analysis', '14 Sep, 1989', 'O-', '55000-75000', 'Senior', 'Indian', 'Hindu', 'Married', 'emilybiotechresearch.org', 'English, Hindi'),
+
+-- 6. Civil Engineer
+('JS-206', '987 Construction Ave, San Francisco, CA 94105', 'BS Civil Engineering - UC Berkeley', 'AutoCAD, Project Management', '30 Jan, 1994', 'A-', '60000-80000', 'Entry-level', 'American', 'Protestant', 'Single', '', 'English'),
+
+-- 7. Electronics Technician
+('JS-207', '147 Circuit Lane, Austin, TX 73301', 'Certificate Electronics - Austin Tech', 'PCB Design, Soldering, QC', '07 Nov, 1997', 'B-', '45000-65000', 'Entry-level', 'Mexican', 'Christian', 'Single', 'james-electronics.com', 'English, Spanish'),
+
+-- 8. Finance Analyst
+('JS-208', '258 Finance Street, San Jose, CA 95113', 'MBA Finance - Santa Clara University', 'Financial Modeling, Excel', '03 Apr, 1992', 'AB-', '62000-82000', 'Mid-level', 'American', 'Buddhist', 'Single', 'jenniferfinance.com', 'English, Mandarin'),
+
+-- 9. AI/ML Specialist
+('JS-209', '369 AI Boulevard, Seattle, WA 98109', 'MS Artificial Intelligence - UW', 'Python, TensorFlow, ML', '17 Jul, 1995', 'O+', '75000-95000', 'Mid-level', 'Chinese', 'Atheist', 'Single', 'chris-ai-portfolio.com', 'English, Mandarin, Japanese'),
+
+-- 10. EMPTY PROFILE for manual testing
+('JS-210', '', '', '', '', '', '', '', '', '', '', '', '');
+
+-- Additional JobSeekersTable entries with matching qualifications (REMOVED expectedSalary)
+INSERT INTO JobSeekersTable (jsid, jsaddress, education, skills, dob, bloodgroup, experiencelevel, nationality, religion, maritalstatus, personalwebsite, languages)
+VALUES
+-- Marine Technician (matches J-7501)
+('JS-301', '789 Harbor View, Miami, FL 33140', 'Certificate in Marine Mechanics', 'Engine Repair, Boat Maintenance, Marine Electronics', '08 Mar, 1994', 'B+', '2 years', 'American', 'Hindu', 'Single', '', 'English, Gujarati'),
+-- Healthcare IT Specialist (matches J-7502)
+('JS-302', '456 Medical Center Dr, Boston, MA 02119', 'BS Health Information Management', 'EPIC Systems, HIPAA Compliance, EHR Support', '12 Nov, 1992', 'A+', '3 years', 'Mexican', 'Catholic', 'Married', 'maria-healthIT.com', 'English, Spanish'),
+-- Aerospace Engineer (matches J-7503)
+('JS-303', '321 Aerospace Ave, Arlington, VA 22204', 'MS Aerospace Engineering', 'CAD, MATLAB, Structural Analysis, CFD', '25 Jun, 1991', 'O+', '4 years', 'Japanese', 'Buddhist', 'Single', 'kenji-aero.com', 'English, Japanese'),
+-- Biotech Researcher (matches J-7504)
+('JS-304', '654 Research Park, San Diego, CA 92122', 'PhD Biotechnology', 'PCR, Cell Culture, Microscopy, Data Analysis', '17 Sep, 1988', 'AB-', '5 years', 'Chinese', 'Atheist', 'Married', 'lisa-biotech.org', 'English, Mandarin'),
+-- Finance Analyst (matches J-7507)
+('JS-305', '987 Wall Street, New York, NY 10023', 'MBA Finance', 'Financial Modeling, Excel, Investment Analysis', '03 Apr, 1993', 'A-', '3 years', 'Egyptian', 'Muslim', 'Single', 'ahmed-finance.com', 'English, Arabic');
+
+
+
+CREATE TABLE SavedJobsTable (
+    savedJobId INT IDENTITY(1,1) PRIMARY KEY,   -- Auto increment raw ID, formatted later as SJ-xxxxx in C#
+
+    jobId NVARCHAR(250) NOT NULL,               -- The job being saved (FK → JobsTable.jobid)
+    jsid NVARCHAR(250) NOT NULL,                -- The jobseeker who saved the job (FK → JobseekersTable.jsid)
+
+    savedDate DATETIME DEFAULT GETDATE(),       -- Raw date & time, formatting applied later in SELECT or C#
+
+    -- Foreign key linking saved job to JobsTable
+    CONSTRAINT FK_SavedJobs_Job FOREIGN KEY (jobId) 
+        REFERENCES JobsTable(jobid) ON DELETE CASCADE,
+
+    -- Foreign key linking saved job to JobseekersTable
+    CONSTRAINT FK_SavedJobs_Jobseeker FOREIGN KEY (jsid) 
+        REFERENCES JobseekersTable(jsid) ON DELETE CASCADE
+);
+
+
+
+
+CREATE TABLE ApplicationsTable (
+    applicationId NVARCHAR(250) PRIMARY KEY,   -- Will hold values like 'AP-10001'
+    jobid NVARCHAR(250) NOT NULL,              -- Matches JobsTable (also NVARCHAR)
+    jsid NVARCHAR(250) NOT NULL,               -- Matches JobSeekersTable
+
+    expectedSalary NVARCHAR(100) NULL,  
+
+    status NVARCHAR(50) NOT NULL, -- e.g., Submitted, Rejected after interview, Rejected, Interview Scheduled, Hired      
+    interviewDate NVARCHAR(50) NULL,    
+    interviewTime NVARCHAR(50) NULL,    
+
+    appliedDate NVARCHAR(50) NOT NULL,      
+
+    CONSTRAINT FK_Applications_Jobs FOREIGN KEY (jobid) REFERENCES JobsTable(jobId),
+    CONSTRAINT FK_Applications_JobSeekers FOREIGN KEY (jsid) REFERENCES JobSeekersTable(jsid)
+);
+
+-- Now logical applications that match qualifications
+INSERT INTO ApplicationsTable (applicationId, jobid, jsid, expectedSalary, status, appliedDate)
+VALUES
+-- Marine Technician applications
+('AP-10001', 'J-7501', 'JS-301', '60000', 'Pending', '15 Sep, 2025'),  -- Marine Equipment Technician
+('AP-10002', 'J-7506', 'JS-301', '58000', 'Pending', '16 Sep, 2025'),  -- Electronics Product Tester (related skills)
+
+-- Healthcare IT applications
+('AP-10003', 'J-7502', 'JS-302', '65000', 'Pending', '12 Sep, 2025'),  -- Healthcare IT Support
+('AP-10004', 'J-7500', 'JS-302', '62000', 'Pending', '13 Sep, 2025'),  -- Junior Software Developer (IT background)
+
+-- Aerospace Engineer applications
+('AP-10005', 'J-7503', 'JS-303', '78000', 'Pending', '10 Sep, 2025'),  -- Aerospace Engineering Assistant
+('AP-10006', 'J-7505', 'JS-303', '75000', 'Pending', '11 Sep, 2025'),  -- Junior Civil Engineer (engineering background)
+
+-- Biotech Researcher applications
+('AP-10007', 'J-7504', 'JS-304', '70000', 'Pending', '08 Sep, 2025'),  -- Lab Research Assistant
+('AP-10008', 'J-7502', 'JS-304', '68000', 'Pending', '09 Sep, 2025'),  -- Healthcare IT Support (medical field)
+
+-- Finance Analyst applications
+('AP-10009', 'J-7507', 'JS-305', '72000', 'Pending', '05 Sep, 2025'),  -- Investment Analyst
+('AP-10010', 'J-7508', 'JS-305', '70000', 'Pending', '06 Sep, 2025');  -- AI Research Intern (analytical skills)
+
+UPDATE ApplicationsTable SET status = 'Submitted' WHERE applicationId IN (
+    'AP-10001', 'AP-10002', 'AP-10003', 'AP-10004',
+    'AP-10005', 'AP-10006', 'AP-10007', 'AP-10008',
+    'AP-10009', 'AP-10010'
+);
+
